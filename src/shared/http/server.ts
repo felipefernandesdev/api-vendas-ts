@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import routes from './routes';
 
@@ -9,5 +9,13 @@ app.use(express.json());
 
 app.use(routes);
 
-app.use();
+app.use(
+  (
+    error: Error,
+    request: Request,
+    response: Response,
+    next: NextFunction,
+  ) => {},
+);
+
 app.listen(3333, () => console.log(`API is running on port 3333`));
